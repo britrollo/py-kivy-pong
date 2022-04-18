@@ -1,1 +1,1 @@
-# py-gui-grid
+# py-kivy-pong
