@@ -35,6 +35,11 @@
         center_x: root.width * 3 / 4
         top: root.top - 50
         text: str(root.player2.score)
+    
+    Label:
+        font_size: 20
+        top: root.top - 10
+        text: "Hits: " + str(root.hits)
 
     PongBall:
         id: pong_ball
