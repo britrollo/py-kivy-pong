@@ -6,9 +6,9 @@ Completed [kivy pong tutorial](https://kivy.org/doc/stable/tutorials/pong.html)
 * Player2 can move paddle with 'up' and 'down' arrow keys
 * Hit counter for how many hits between paddles between serves
 * Ball stops accelerating once overall velocity is > 25
+* Game pauses if window is not in focus
 
 ### TODO:
-* Pause game option
 * Declare winner
 
 ### Bugs Resolved

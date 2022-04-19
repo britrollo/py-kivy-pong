@@ -67,20 +67,21 @@ class PongGame(Widget):
         self.ball.velocity = vel
 
     def update(self, dt):
-        self.ball.move()
+        if Window.focus:
+            self.ball.move()
 
-        if self.player1.bounce_ball(self.ball) or self.player2.bounce_ball(self.ball):
-            self.hits += 1
+            if self.player1.bounce_ball(self.ball) or self.player2.bounce_ball(self.ball):
+                self.hits += 1
 
-        if (self.ball.y < 0) or (self.ball.top > self.height):
-            self.ball.velocity_y *= -1
-        
-        if self.ball.x < self.x:
-            self.player2.score += 1
-            self.serve_ball(vel=(4, 0))
-        if self.ball.right > self.width:
-            self.player1.score += 1
-            self.serve_ball(vel=(4, 0))
+            if (self.ball.y < 0) or (self.ball.top > self.height):
+                self.ball.velocity_y *= -1
+            
+            if self.ball.x < self.x:
+                self.player2.score += 1
+                self.serve_ball(vel=(4, 0))
+            if self.ball.right > self.width:
+                self.player1.score += 1
+                self.serve_ball(vel=(4, 0))
     
     def on_touch_move(self, touch):
         if touch.x < self.width / 3:
