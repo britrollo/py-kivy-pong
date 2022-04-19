@@ -7,6 +7,7 @@ from kivy.vector import Vector
 from kivy.clock import Clock
 from random import randint
 from kivy.core.window import Window
+from math import sqrt
 
 class PongPaddle(Widget):
     score = NumericProperty(0)
@@ -14,9 +15,13 @@ class PongPaddle(Widget):
     def bounce_ball(self, ball):
         if self.collide_widget(ball):
             vx, vy = ball.velocity
+            overall_vel = sqrt(vx**2 + vy**2)
             offset = (ball.center_y - self.center_y) / (self.height / 2)
             bounced = Vector(-1 * vx, vy)
-            vel = bounced * 1.1
+            accel = 1
+            if overall_vel < 25: # do not accelerate ball is over this speed
+                accel = 1.1
+            vel = bounced * accel
             ball.velocity = vel.x, vel.y + offset
             return True
         return False
@@ -28,6 +33,7 @@ class PongBall(Widget):
 
     def move(self):
         self.pos = Vector(*self.velocity) + self.pos
+        # print("self.pos: " + str(self.pos) + " -- vel: " + str(self.velocity))
 
 class PongGame(Widget):
     hits = NumericProperty(0)
