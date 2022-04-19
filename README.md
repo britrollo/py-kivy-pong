@@ -11,7 +11,7 @@ Completed [kivy pong tutorial](https://kivy.org/doc/stable/tutorials/pong.html)
 * Pause game option
 * Declare winner
 
-## Bugs Resolved
+### Bugs Resolved
 | Issue       | Bug         | Fix         |
 | ----------- | ----------- | ----------- |
 | After about 25 paddle hits - player2 automatically wins | velocity > paddle width causing ball to move out of bounds before collision with paddle was updated | Added max speed      |
